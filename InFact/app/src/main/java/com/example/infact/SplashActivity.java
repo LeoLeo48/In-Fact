@@ -18,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
 
         background.start();
     }
+
     Thread background = new Thread() {
         public void run() {
             try {

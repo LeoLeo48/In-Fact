@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">InFact</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="StringQuienesSomos1">\"Manejar cuentas nunca fue tan sencillo como ahora\"</string>
+    <string name="snackbar_message">¿Seguro que quieres salir?</string>
+    <string name="salirSI_string">Sí</string>
+    <string name="salirString">Salir</string>
+    <string name="CrearFormulario">Crear Formulario</string>
+    <string name="btnCrearFormulario">Crear Nuevo Formulario</string>
 </resources>
