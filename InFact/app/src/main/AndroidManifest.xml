@@ -3,15 +3,17 @@
     package="com.example.infact">
 
     <application
+        android:requestLegacyExternalStorage="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectFacturasActivity"></activity>
+        <activity android:name=".SelectFactEscActivity"></activity>
+        <activity android:name=".CrearFacturaManual" />
+        <activity android:name=".SelectFacturasActivity" />
         <activity android:name=".CrearFormularioActivity" />
-        <activity android:name=".ListFacturasActivity" />
         <activity android:name=".QuienesSomosActivity" />
         <activity android:name=".ActivityPrincipal" />
         <activity android:name=".SplashActivity">
@@ -27,4 +29,5 @@
             android:resource="@array/preloaded_fonts" />
     </application>
 
+    <uses-permission android:name="android.permission.CAMERA" />
 </manifest>

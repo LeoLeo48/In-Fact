@@ -5,25 +5,27 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ActivityPrincipal"
     android:background="@android:color/background_dark"
-    >
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".ActivityPrincipal">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lista de Formularios"
+        android:fontFamily="@font/didact_gothic"
         android:textAlignment="center"
         android:textColor="@color/cardview_light_background"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFormularios"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:padding="10dp" />
 
 
 </LinearLayout>

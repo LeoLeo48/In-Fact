@@ -5,6 +5,10 @@ public class Formulario {
     private int mes,anio,id;
     private boolean estado;
 
+    public Formulario()
+    {
+
+    }
     public Formulario(String nombre, int mes, int anio, boolean estado) {
         this.nombre = nombre;
         this.mes = mes;

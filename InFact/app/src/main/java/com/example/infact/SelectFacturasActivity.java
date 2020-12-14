@@ -2,8 +2,15 @@ package com.example.infact;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +20,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.infact.controllers.AyudanteBaseDeDatos;
+import com.example.infact.controllers.FacturaController;
+import com.example.infact.modelos.Factura;
+import com.example.infact.modelos.Formulario;
+
 
 public class SelectFacturasActivity extends AppCompatActivity {
 
@@ -20,8 +32,8 @@ public class SelectFacturasActivity extends AppCompatActivity {
     //Button btnActualizar, btnUpdateImage;
     ListView lvLista;
 
-    //Factura factura;
-    //FacturaController fecturaController;
+    Factura factura;
+    FacturaController facturaController;
     //Pattern patPuntuacion = Pattern.compile("([1-5])");
     //ImageView fotoPUpdate;
     //Bitmap imgPUpdate;
@@ -34,25 +46,73 @@ public class SelectFacturasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_facturas);
 
         lvLista = findViewById(R.id.lvLista);
-        //formulario = new Pelicula();
-        id = getIntent().getIntExtra("id", 0);
+        factura = new Factura();
+        //id = getIntent().getIntExtra("id", 0);
 
-        //peliculaController = new PeliculaController(SelectFacturasActivity.this);
-        //pelicula = peliculaController.peliculaEspecifica(id);
+        facturaController = new FacturaController(SelectFacturasActivity.this);
+        //
+//Para realizar la consulta usaremos el ayudante y tambien una bd sqlite
+        AyudanteBaseDeDatos ayudanteBaseDatos = new AyudanteBaseDeDatos(SelectFacturasActivity.this);
+        SQLiteDatabase sqLiteDatabase = ayudanteBaseDatos.getReadableDatabase();
 
-        final String[] nombres = {"nombre1","nombre2"};
-        final String[] meses = {"12","21"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,nombres);
+        String[] facturasLine = new String[0];
+        //sera un objeto del tipo Cursor
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from factura;",null);
+        if (cursor.moveToFirst()){
+            int i = 0; facturasLine = new String[cursor.getCount()];
+            do {
+                int idObtenido = cursor.getInt(0);
+                int nitObtenido = cursor.getInt(1);
+                int facturaObtenido = cursor.getInt(2);
+                String autorizacionObtenido = cursor.getString(3);
+                String fechaObtenido = cursor.getString(4);
+                int importeObtenido = cursor.getInt(5);
+                String codigoObtenido = cursor.getString(6);
+
+                facturasLine[i] = "N°"+idObtenido+"   "+nitObtenido+"   N°F:"+facturaObtenido+"         :"+autorizacionObtenido
+                        +"    "+fechaObtenido+"     Imp:"+importeObtenido+",00    "+codigoObtenido;
+                i++;
+                //ahora tenemos que validar los datos
+
+            }while (cursor.moveToNext());
+
+
+        }else{
+            Toast.makeText(getApplicationContext(),"No hay registros",Toast.LENGTH_LONG).show();
+        }
+        final String[] facturas = facturasLine;
+        //
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,facturas);
         lvLista.setAdapter(adapter);
 
-        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int posicion, long id) {
-                //tvMEnsaje.setText("Infectados en "+paises[posicion]+" son: "+infectados[posicion]);
-                //para optener el item en la posicion donde se selecciono:
-                Toast.makeText(getApplicationContext(),"item"+lvLista.getItemAtPosition(posicion)+" id: "+lvLista.getItemIdAtPosition(posicion),Toast.LENGTH_LONG).show();
-
-            }
-        });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.factura_toolbar,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.itemAgregarManual:
+                intent = new Intent(this, CrearFacturaManual.class);
+                startActivity(intent);
+                return true;
+            case R.id.itemAgregarQR:
+                intent = new Intent(this, SelectFactEscActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.itemExportar:
+                //Salir(findViewById(R.id.linearLayout));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

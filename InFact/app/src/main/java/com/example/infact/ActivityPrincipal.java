@@ -139,7 +139,7 @@ public class ActivityPrincipal extends AppCompatActivity {
         snackbar.show();
         //Alert Dialog (se puede borrar y no pasa nada)--------------------
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("¿Estas seguro de que quires salir?")
+        alert.setMessage("¿Estas seguro de querer salir?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

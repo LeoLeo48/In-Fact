@@ -17,7 +17,9 @@ import com.example.infact.controllers.FormularioController;
 import com.example.infact.modelos.Formulario;
 import com.example.infact.controllers.AyudanteBaseDeDatos;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 //import com.example.infact.peliculas.RegisterPeliculaActivity;
 /**
  * A simple {@link Fragment} subclass.
@@ -35,6 +37,9 @@ public class CreateFormFragment extends Fragment {
     Formulario form;
     FormularioController formularioController;
     View view;
+    //patern texto
+    Pattern patTexto = Pattern.compile("[a-zA-Z]");
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -86,6 +91,8 @@ public class CreateFormFragment extends Fragment {
         etMes = view.findViewById(R.id.etMes);
         etAnio = view.findViewById(R.id.etAnio);
 
+
+
         formularioController = new FormularioController(view.getContext());
 
         btnCrear.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +100,18 @@ public class CreateFormFragment extends Fragment {
             public void onClick(View view) {
                 try {
                     String nombreString = etNombre.getText().toString().trim();
-                    String mesString = etMes.getText().toString().trim();
-                    String anioString = etAnio.getText().toString().trim();
+                    String mesString = etMes.getText().toString();
+                    String anioString = etAnio.getText().toString();
                     //Validar que no esten vacios
                     if (nombreString.equals("")){
                         etNombre.setError("Debes insertar un nombre");
+                        etNombre.requestFocus();
+                        return;
+                    }
+                    String nombre = etNombre.getText().toString();
+                    Matcher matcherN = patTexto.matcher(nombre);
+                    if (matcherN.find()==false){
+                        etNombre.setError("Solo se permiten letras");
                         etNombre.requestFocus();
                         return;
                     }
@@ -107,8 +121,8 @@ public class CreateFormFragment extends Fragment {
                         return;
                     }
                     int mesInt = Integer.parseInt(mesString);
-                    if (mesInt<0){
-                        etMes.setError("El mes debe ser un numero entero positivo");
+                    if (mesInt<1 && mesInt>12){
+                        etMes.setError("El mes debe ser un numero entero positivo entre 1 y 12");
                         etMes.requestFocus();
                         return;
                     }
@@ -118,9 +132,9 @@ public class CreateFormFragment extends Fragment {
                         etAnio.requestFocus();
                         return;
                     }
-                    int anioInt = Integer.parseInt(mesString);
-                    if (mesInt<0){
-                        etAnio.setError("El año debe ser un numero entero positivo");
+                    int anioInt = Integer.parseInt(anioString);
+                    if (anioInt<1900 && anioInt>2021){
+                        etAnio.setError("El año debe estar entre 1900 y la fecha actual");
                         etAnio.requestFocus();
                         return;
                     }

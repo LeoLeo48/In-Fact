@@ -9,7 +9,7 @@ public class AyudanteBaseDeDatos extends SQLiteOpenHelper {
 
     private static final String NOMBRE_BASE_DE_DATOS = "infact",
             NOMBRE_TABLA_FORMULARIO = "formulario",
-            NOMBRE_TABLA_FACTURA = "pelicula";
+            NOMBRE_TABLA_FACTURA = "factura";
 
     private static final int VERSION_BASE_DE_DATOS =2;
 
@@ -20,7 +20,7 @@ public class AyudanteBaseDeDatos extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(String.format("create table if not exists %s(id integer primary key autoincrement, nombre text not null,mes integer not null, anio integer not null, estado boolean not null);",NOMBRE_TABLA_FORMULARIO));
-        sqLiteDatabase.execSQL(String.format("create table if not exists %s(id integer primary key autoincrement, nombre text, genero text, compania text, duracion integer, puntuacion integer,foto blob);",NOMBRE_TABLA_FACTURA));
+        sqLiteDatabase.execSQL(String.format("create table if not exists %s(id integer primary key autoincrement, nit integer, factura integer, autorizacion text, fecha text, importe integer, codigo text);",NOMBRE_TABLA_FACTURA));
     }
 
     @Override

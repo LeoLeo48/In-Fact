@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/background_dark"
     tools:context=".CreateFormFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,9 +21,11 @@
                 android:id="@+id/txtTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:text="@string/CrearFormulario"
-                android:textSize="30sp"
+                android:fontFamily="@font/didact_gothic"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -32,7 +35,9 @@
                 android:layout_marginBottom="5dp"
                 android:ems="10"
                 android:hint="Nombre"
-                android:inputType="textPersonName"></EditText>
+                android:inputType="textPersonName"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"></EditText>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -46,7 +51,9 @@
                     android:layout_marginBottom="5dp"
                     android:ems="10"
                     android:hint="Mes"
-                    android:inputType="textPersonName"></EditText>
+                    android:inputType="textPersonName"
+                    android:textColor="@color/cardview_light_background"
+                    android:textColorHint="@color/cardview_light_background"></EditText>
 
                 <EditText
                     android:id="@+id/etAnio"
@@ -55,10 +62,12 @@
                     android:layout_marginBottom="5dp"
                     android:ems="10"
                     android:hint="Año"
-                    android:inputType="textPersonName"></EditText>
+                    android:inputType="textPersonName"
+                    android:textColor="@color/cardview_light_background"
+                    android:textColorHint="@color/cardview_light_background"></EditText>
 
                 <EditText
-                    android:id="@+id/etEdad"
+                    android:id="@+id/etFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
@@ -68,10 +77,13 @@
 
             <Button
                 android:id="@+id/btnCrear"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@color/colorCard"
+                android:shadowColor="#FF0000"
                 android:text="@string/btnCrearFormulario"
                 android:textSize="18sp"
                 android:textStyle="bold" />

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/itemAgregarManual"
+        android:title="Agregar Factura Manual"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/itemAgregarQR"
+        android:title="Agregar Factura por Codigo QR"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/itemExportar"
+        android:title="Exportar en excel"
+        app:showAsAction="never" />
+
+</menu>

@@ -6,26 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SelectFacturasActivity"
+    tools:context=".SelectFactEscActivity"
     android:background="@android:color/background_dark"
     >
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="505dp"
         android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="50dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Facturas"
                 android:fontFamily="@font/didact_gothic"
+                android:text="Facturas"
                 android:textAlignment="center"
                 android:textColor="@color/cardview_light_background"
                 android:textSize="28sp"
@@ -38,9 +39,21 @@
                 android:layout_height="419dp"
                 android:layout_margin="20dp"
                 android:background="@color/colorCard"
-                android:padding="5dp" />
+                android:padding="5dp">
+
+            </ListView>
+
         </LinearLayout>
+
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBoton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/presence_online" />
 
 
 </LinearLayout>

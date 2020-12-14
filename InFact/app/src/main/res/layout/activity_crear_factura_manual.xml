@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@android:color/background_dark"
+    tools:context=".CrearFacturaManual">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Crear factura manualmente"
+                android:fontFamily="@font/didact_gothic"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="28sp"/>
+
+            <EditText
+                android:id="@+id/etNit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="NIT"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etFactura"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="N° Factura"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etAutorizacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="N° Autorizacion / CUF"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etImporte"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Importe Total"
+                android:inputType="number"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etCodigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:ems="10"
+                android:hint="Codigo Control"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/cardview_light_background"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnCrear"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorCard"
+                android:text="Crear"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
